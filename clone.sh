@@ -9,7 +9,8 @@ rm -rf package/lean/luci-theme-argon
 sed -i '$a src-git smallpackage https://github.com/kenzok8/small-package' feeds.conf.default
 sed -i '$a src-git openwrtpackages https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git openwrtpasswall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
-sed -i '$a src-git OpenClash https://github.com/vernesong/OpenClash' feeds.conf.default
+sed -i '$a src-git openclash https://github.com/vernesong/OpenClash' feeds.conf.default
+sed -i '$a src-git clashpackages https://github.com/vernesong/packages' feeds.conf.default
 
 cat feeds.conf.default
 
@@ -20,4 +21,4 @@ git clone https://github.com/jerrykuku/luci-app-argon-config.git
 git clone https://github.com/kenzok8/openwrt-packages.git
 git clone https://github.com/Ausaci/luci-app-nat6-helper.git
 git clone https://github.com/vernesong/OpenClash.git
-# git clone -b packages --single-branch https://github.com/xiaorouji/openwrt-passwall.git
+ git clone -b packages --single-branch https://github.com/xiaorouji/openwrt-passwall.git
