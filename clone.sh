@@ -5,6 +5,13 @@ mv ./lede/* ./
 
 # 下载自定义插件
 rm -rf package/lean/luci-theme-argon
+
+sed -i '$a src-git openwrt-packages https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git openwrt-passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
+sed -i '$a src-git OpenClash https://github.com/vernesong/OpenClash' feeds.conf.default
+
+cat feeds.conf.default
+
 cd package
 # git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
 git clone https://github.com/jerrykuku/luci-theme-argon.git
