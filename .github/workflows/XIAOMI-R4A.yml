@@ -1,0 +1,62 @@
+#
+# Copyright (c) 2021-2022 smalls0098 <https://smalls0098.com>
+#
+# This is free software, licensed under the BSD 3-Clause License.
+# See /LICENSE for more information.
+#
+# https://github.com/cnlowkey/OpenWrt-XiaomiR4A
+# Description: Build OpenWrt using GitHub Actions
+#
+
+name: XIAOMI-R4A
+on:
+  workflow_dispatch:
+    inputs:
+      build:
+        description: '若要编译固件，请输入true'
+        required: true
+        default: 'true'
+      version_description:
+        description: '输入版本描述'     
+        required: true
+        default: '升级内容：内核升级，更新应用版本'
+      cpu_overclock:
+        description: '超频到1100Mhz'
+        required: false
+        default: 'false'
+        type: boolean
+      release:
+        description: '上传到release'
+        required: false
+        default: 'true'
+        type: boolean
+      artifact:
+        description: '上传到artifact'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  build_openwrt:
+    name: 固件编译
+    runs-on: ubuntu-latest
+    if: github.event.inputs.build == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: 环境准备
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync
+          sudo apt-get -y autoremove --purge
+          sudo apt-get clean
+          df -h
+      - name: 下载依赖
+        run: |
+          echo "CLONE_SH=clone.sh" >> $GITHUB_ENV
+          chmod +x $CLONE_SH
+          $CLONE_SH
+      - name: 升级feeds
+        run: |
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
