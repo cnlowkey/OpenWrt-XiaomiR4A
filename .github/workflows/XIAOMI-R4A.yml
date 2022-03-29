@@ -74,6 +74,8 @@ jobs:
         run: |
           #mv -f $CONFIG_PA ./.config
           sed -i 's/^[ \t]*//g' ./.config
+          cat .config
+          cat Makefile
           make defconfig
       - name: Make download
         run: |
