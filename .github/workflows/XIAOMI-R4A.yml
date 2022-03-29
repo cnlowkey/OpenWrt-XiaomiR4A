@@ -55,6 +55,9 @@ jobs:
         run: |
           echo "CLONE_SH=clone.sh" >> $GITHUB_ENV
           echo "MODIFY_SH=modify.sh" >> $GITHUB_ENV
+          echo "RELEASE_TITLE=lede for xiaomi 4a gigabit" >> $GITHUB_ENV
+          echo "ZH_TITLE=小米4A千兆版lede固件" >> $GITHUB_ENV
+          echo "KEY_INFO=版本：lean lede源码<br/>登陆IP 192.168.31.1，密码password" >> $GITHUB_ENV
       - name: 下载依赖
         run: |
           chmod +x clone.sh
@@ -77,6 +80,7 @@ jobs:
           sed -i 's/^[ \t]*//g' ./.config
           ls -l
           make defconfig
+          cat .config
       - name: Make download
         run: |
           make download -j8 || make download -j1 V=s

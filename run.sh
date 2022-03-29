@@ -1,4 +1,13 @@
 #!/bin/sh
+#
+# Copyright (c) 2021-2022 smalls0098 <https://smalls0098.com>
+#
+# This is free software, licensed under the BSD 3-Clause License.
+# See /LICENSE for more information.
+#
+# https://github.com/cnlowkey/OpenWrt-XiaomiR4A
+# Description: Build OpenWrt using GitHub Actions
+#
 
 # 环境准备
 sudo apt-get update
