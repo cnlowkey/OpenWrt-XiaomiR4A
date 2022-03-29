@@ -51,13 +51,10 @@ jobs:
           sudo apt-get -y autoremove --purge
           sudo apt-get clean
           df -h
-      - name: 环境变量
-        run: |
-          echo "CLONE_SH=clone.sh" >> $GITHUB_ENV
       - name: 下载依赖
         run: |
-          chmod +x $CLONE_SH
-          $CLONE_SH
+          chmod +x clone.sh
+          clone.sh
       - name: 升级feeds
         run: |
           ./scripts/feeds update -a
