@@ -6,6 +6,8 @@ mv ./lede/* ./
 # 下载自定义插件
 rm -rf package/lean/luci-theme-argon
 
+sed -i '$a src-git openwrt_packages https://github.com/openwrt/packages' feeds.conf.default
+sed -i '$a src-git luci https://github.com/openwrt/luci.git' feeds.conf.default
 sed -i '$a src-git coolsnowwolf_packages https://github.com/coolsnowwolf/packages' feeds.conf.default
 sed -i '$a src-git kiddin9_packages https://github.com/kiddin9/openwrt-packages' feeds.conf.default
 sed -i '$a src-git liuran001_packages https://github.com/liuran001/openwrt-packages' feeds.conf.default
