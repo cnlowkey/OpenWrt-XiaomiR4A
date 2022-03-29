@@ -11,10 +11,10 @@ sed -i '/Device\/xiaomi_mi-router-4a-gigabit/,/Mi Router 4A/ s/14848k/16064k/' t
 #配置smartdns、ipv6、主题、vssr
 sed -i '/exit 0/d' package/lean/default-settings/files/zzz-default-settings
 # shellcheck disable=SC2129
-cat config/smartdns >> package/lean/default-settings/files/zzz-default-settings
-cat config/ipv6 >> package/lean/default-settings/files/zzz-default-settings
-cat config/theme >> package/lean/default-settings/files/zzz-default-settings
-cat config/vssr >> package/lean/default-settings/files/zzz-default-settings
+cat settings/smartdns >> package/lean/default-settings/files/zzz-default-settings
+cat settings/ipv6 >> package/lean/default-settings/files/zzz-default-settings
+cat settings/theme >> package/lean/default-settings/files/zzz-default-settings
+cat settings/vssr >> package/lean/default-settings/files/zzz-default-settings
 #切换ramips内核到5.10
 #sed -i '/KERNEL_PATCHVER/cKERNEL_PATCHVER:=5.10' target/linux/ramips/Makefile
 cat target/linux/ramips/Makefile
