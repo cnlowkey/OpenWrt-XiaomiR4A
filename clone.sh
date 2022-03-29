@@ -20,8 +20,8 @@ sed -i '$a src-git luci_openwrt https://github.com/openwrt/luci.git' feeds.conf.
 sed -i '$a src-git kiddin9_packages https://github.com/kiddin9/openwrt-packages' feeds.conf.default
 sed -i '$a src-git liuran001_packages https://github.com/liuran001/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small_packages https://github.com/kenzok8/small' feeds.conf.default
-sed -i '$a src-git small_package https://github.com/kenzok8/small-package' feeds.conf.default
-sed -i '$a src-git openwrt_packages https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git kenzok8_small_package https://github.com/kenzok8/small-package' feeds.conf.default
+sed -i '$a src-git kenzok8_packages https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
 
 # shellcheck disable=SC2164
