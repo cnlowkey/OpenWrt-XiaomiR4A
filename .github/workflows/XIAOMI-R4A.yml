@@ -62,3 +62,68 @@ jobs:
         run: |
           ./scripts/feeds update -a
           ./scripts/feeds install -a
+      - name: 修改配置
+        run: |
+          if [ ${{ github.event.inputs.cpu_overclock }} == true ]
+          then
+            sed -i '/322-mt7621-fix-cpu-clk-add-clkdev.patch/ s/#//' modify.sh
+          fi
+          chmod +x modify.sh
+          sh modify.sh
+      - name: 生成.config文件
+        run: |
+          #mv -f $CONFIG_PA ./.config
+          sed -i 's/^[ \t]*//g' ./.config
+          make defconfig
+      - name: Make download
+        run: |
+          make download -j8 || make download -j1 V=s
+          rm -rf $(find ./dl/ -size -1024c)
+          df -h
+      - name: 编译
+        run: |
+          make -j$(nproc) || make -j1 V=s
+          echo "======================="
+          echo "Space usage:"
+          echo "======================="
+          df -h
+          echo "======================="
+          du -h ./ --max-depth=1
+      - name: 整理固件目录
+        run: |
+          mkdir -p ./collected_firmware/packages
+          rm -rf $(find ./bin/targets/ -type d -name "packages")
+          cp -rf $(find ./bin/targets/ -type f) ./collected_firmware
+          cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./collected_firmware/packages
+          cd collected_firmware
+          zip -r ./allfiles.zip ./*
+          cd packages
+          zip -r ../packages.zip ./*
+      - name: 获取当前日期
+        run: |
+          CURRENT_TIME=$(TZ=Asia/Shanghai date +'%y.%-m.%-d.%H%M%S')
+          CURRENT_TIME=${CURRENT_TIME:1}
+          echo "TAG_NAME=${CURRENT_TIME}" >> $GITHUB_ENV
+          echo "RELEASE_PRE=${CURRENT_TIME%.*}" >> $GITHUB_ENV
+      - name: 上传固件到release
+          if: github.event.inputs.release == 'true' && env.RELEASE_FIRMWARE_VALUE != ''
+          uses: svenstaro/upload-release-action@v2
+          with:
+            repo_token: ${{ secrets.RELEASE_FIRMWARE }}
+            file: collected_firmware/*
+            tag: ${{ env.TAG_NAME }}
+            release_name: "${{ env.RELEASE_PRE }} ${{ env.RELEASE_TITLE }}"
+            overwrite: true
+            prerelease: false
+            body: "${{ env.ZH_TITLE }}<br/>${{ env.KEY_INFO }}<br/>${{ github.event.inputs.version_description }}"
+            file_glob: true
+          env:
+            RELEASE_FIRMWARE_VALUE: ${{ secrets.RELEASE_FIRMWARE }}
+      - name: 上传固件到artifact
+          if: github.event.inputs.artifact == 'true' || failure()
+          uses: actions/upload-artifact@v3
+          with:
+            name: collected_firmware
+            path: |
+              collected_firmware/
+              !collected_firmware/*.zip
