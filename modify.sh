@@ -25,9 +25,9 @@ cat settings/ipv6 >> package/lean/default-settings/files/zzz-default-settings
 cat settings/theme >> package/lean/default-settings/files/zzz-default-settings
 cat settings/vssr >> package/lean/default-settings/files/zzz-default-settings
 #切换ramips内核到5.10
-#sed -i '/KERNEL_PATCHVER/cKERNEL_PATCHVER:=5.10' target/linux/ramips/Makefile
-#cat target/linux/ramips/Makefile
+sed -i '/KERNEL_PATCHVER/cKERNEL_PATCHVER:=5.10' target/linux/ramips/Makefile
+cat target/linux/ramips/Makefile
 #设置WIFI
-#sed -i 's/OpenWrt/smalls-plus/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/OpenWrt/smalls-plus/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #sed -i 's/wireless.default_radio${devidx}.encryption=none/wireless.default_radio${devidx}.encryption=psk-mixed/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #sed -i '/encryption/a\set wireless.default_radio${devidx}.key=smalls0098' package/kernel/mac80211/files/lib/wifi/mac80211.sh
