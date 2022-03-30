@@ -108,15 +108,16 @@ jobs:
           du -h ./ --max-depth=1
       - name: 整理固件目录
         run: |
-          cd lede
           mkdir -p ./collected_firmware/packages
-          rm -rf $(find ./bin/targets/ -type d -name "packages")
-          cp -rf $(find ./bin/targets/ -type f) ./collected_firmware
-          cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./collected_firmware/packages
+          rm -rf $(find ./lede/bin/targets/ -type d -name "packages")
+          cp -rf $(find ./lede/bin/targets/ -type f) ./collected_firmware
+          cp -rf $(find ./lede/bin/packages/ -type f -name "*.ipk") ./collected_firmware/packages
           cd collected_firmware
-          zip -r ../allfiles.zip ./*
+          ls -l
+          zip -r ./allfiles.zip ./*
+          ls -l
           cd packages
-          zip -r ../../packages.zip ./*
+          zip -r ../packages.zip ./*
           cd ..
           ls -l
       - name: 获取当前日期
