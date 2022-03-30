@@ -14,8 +14,8 @@ git clone https://github.com/coolsnowwolf/lede.git
 
 # 修复bug
 #https://github.com/coolsnowwolf/lede/issues/9154
-sed -i 's/of_get_mac_address(dp->dn)/of_get_mac_address(dp->dn, dp->mac)/g' lede/target/linux/generic/hack-5.10/781-dsa-register-every-port-with-of_platform.patch
-cat lede/target/linux/generic/hack-5.10/781-dsa-register-every-port-with-of_platform.patch
+#sed -i 's/of_get_mac_address(dp->dn)/of_get_mac_address(dp->dn, dp->mac)/g' lede/target/linux/generic/hack-5.10/781-dsa-register-every-port-with-of_platform.patch
+#cat lede/target/linux/generic/hack-5.10/781-dsa-register-every-port-with-of_platform.patch
 
 
 
