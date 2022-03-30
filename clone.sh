@@ -24,6 +24,8 @@ rm -rf package/lean/luci-theme-argon
 #sed -i '$a src-git kenzok8_packages https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 #sed -i '$a src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
 
+./scripts/feeds update -a
+./scripts/feeds install -a
 # shellcheck disable=SC2164
 cd package
 # git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
