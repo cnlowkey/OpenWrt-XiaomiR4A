@@ -8,4 +8,4 @@
 # https://github.com/cnlowkey/OpenWrt-XiaomiR4A
 # Description: Build OpenWrt using GitHub Actions
 
-cp -rf feeds/packages/lang/golang/golang-package.mk feeds/lang/golang/golang-package.mk
+#cp -rf feeds/packages/lang/golang/golang-package.mk feeds/lang/golang/golang-package.mk

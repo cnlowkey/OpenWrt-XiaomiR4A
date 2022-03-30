@@ -66,6 +66,7 @@ jobs:
           sh $CLONE_SH
       - name: 升级feeds
         run: |
+          ./scripts/feeds clean
           ./scripts/feeds update -a
           chmod +x $FEEDS_SH
           sh $FEEDS_SH
