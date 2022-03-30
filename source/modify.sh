@@ -24,8 +24,8 @@ cat source/settings/config_ipv6 >> lede/package/lean/default-settings/files/zzz-
 cat source/settings/config_theme >> lede/package/lean/default-settings/files/zzz-default-settings
 cat source/settings/config_vssr >> lede/package/lean/default-settings/files/zzz-default-settings
 echo "exit 0" >> lede/package/lean/default-settings/files/zzz-default-settings
-# 切换ramips内核到5.10
-sed -i '/KERNEL_PATCHVER/cKERNEL_PATCHVER:=5.10' lede/target/linux/ramips/Makefile
+# 切换ramips内核到5.15
+sed -i '/KERNEL_PATCHVER/cKERNEL_PATCHVER:=5.15' lede/target/linux/ramips/Makefile
 # 复制内核5.10版本CPU超频补丁
 #\cp -rf preset-models/322-mt7621-fix-cpu-clk-add-clkdev.patch target/linux/ramips/patches-5.10/322-mt7621-fix-cpu-clk-add-clkdev.patch
 # 设置WIFI
