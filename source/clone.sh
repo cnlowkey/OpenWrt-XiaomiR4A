@@ -13,8 +13,11 @@ git clone https://github.com/coolsnowwolf/lede.git
 #mv ./lede/* ./
 
 # 修复bug
+#https://github.com/coolsnowwolf/lede/issues/9154
 sed -i 's/of_get_mac_address(dp->dn)/of_get_mac_address(dp->dn, dp->mac)/g' lede/target/linux/generic/hack-5.10/781-dsa-register-every-port-with-of_platform.patch
 cat lede/target/linux/generic/hack-5.10/781-dsa-register-every-port-with-of_platform.patch
+
+
 
 # 下载自定义插件
 rm -rf lede/package/lean/luci-theme-argon
