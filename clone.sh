@@ -5,7 +5,7 @@
 # This is free software, licensed under the BSD 3-Clause License.
 # See /LICENSE for more information.
 #
-# https://github.com/cnlowkey/OpenWrt-XiaomiR4A
+# https://github.com/cnlowkey/OpenWrt-XiaomiR4Aßå
 # Description: Build OpenWrt using GitHub Actions
 #
 # 下载源码
@@ -26,9 +26,10 @@ rm -rf package/lean/luci-theme-argon
 
 # shellcheck disable=SC2164
 cd package
- git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
-#git clone https://github.com/jerrykuku/luci-theme-argon.git
+# git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
+git clone https://github.com/jerrykuku/luci-theme-argon.git
 git clone https://github.com/jerrykuku/luci-app-argon-config.git
 git clone https://github.com/kenzok8/openwrt-packages.git
 git clone https://github.com/Ausaci/luci-app-nat6-helper.git
 git clone -b packages --single-branch https://github.com/xiaorouji/openwrt-passwall.git
+ls -l
