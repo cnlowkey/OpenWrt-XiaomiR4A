@@ -75,7 +75,7 @@ jobs:
         run: |
           if [ ${{ github.event.inputs.cpu_overclock }} == true ]
           then
-            sed -i '/322-mt7621-fix-cpu-clk-add-clkdev.patch/ s/#//' $MODIFY_SH
+            sed -i '/mt7621-fix-cpu.patch/ s/#//' $MODIFY_SH
           fi
           chmod +x $MODIFY_SH
           sh $MODIFY_SH
