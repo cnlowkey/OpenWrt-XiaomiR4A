@@ -15,7 +15,7 @@ mv ./lede/* ./
 # 下载自定义插件
 rm -rf package/lean/luci-theme-argon
 
-#sed -i '$a src-git openwrt_packages https://github.com/openwrt/packages' feeds.conf.default
+sed -i '$a src-git openwrt_packages https://github.com/openwrt/packages' feeds.conf.default
 #sed -i '$a src-git luci_openwrt https://github.com/openwrt/luci.git' feeds.conf.default
 #sed -i '$a src-git kiddin9_packages https://github.com/kiddin9/openwrt-packages' feeds.conf.default
 #sed -i '$a src-git liuran001_packages https://github.com/liuran001/openwrt-packages' feeds.conf.default
@@ -27,6 +27,7 @@ rm -rf package/lean/luci-theme-argon
 # shellcheck disable=SC2164
 cd package
 # git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
+git clone -b master --single-branch https://github.com/openwrt/packages.git openwrt_packages
 git clone https://github.com/jerrykuku/luci-theme-argon.git
 git clone https://github.com/jerrykuku/luci-app-argon-config.git
 git clone https://github.com/kenzok8/openwrt-packages.git
