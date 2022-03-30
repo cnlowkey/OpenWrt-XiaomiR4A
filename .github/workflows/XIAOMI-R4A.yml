@@ -70,6 +70,7 @@ jobs:
           chmod +x $FEEDS_SH
           sh $FEEDS_SH
           ./scripts/feeds install -a
+          ./scripts/feeds install -a
       - name: 修改配置
         run: |
           if [ ${{ github.event.inputs.cpu_overclock }} == true ]
