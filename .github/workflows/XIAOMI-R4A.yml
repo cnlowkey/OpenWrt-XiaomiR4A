@@ -53,9 +53,9 @@ jobs:
           df -h
       - name: 设置环境变量
         run: |
-          echo "CLONE_SH=clone.sh" >> $GITHUB_ENV
-          echo "FEEDS_SH=feeds.sh" >> $GITHUB_ENV
-          echo "MODIFY_SH=modify.sh" >> $GITHUB_ENV
+          echo "CLONE_SH=source/clone.sh" >> $GITHUB_ENV
+          echo "FEEDS_SH=source/feeds.sh" >> $GITHUB_ENV
+          echo "MODIFY_SH=source/modify.sh" >> $GITHUB_ENV
           echo "RELEASE_TITLE=lede for xiaomi 4a gigabit" >> $GITHUB_ENV
           echo "ZH_TITLE=小米4A千兆版lede固件" >> $GITHUB_ENV
           echo "KEY_INFO=版本：lean lede源码<br/>登陆IP 192.168.31.1，密码password" >> $GITHUB_ENV
@@ -63,12 +63,15 @@ jobs:
         run: |
           chmod +x $CLONE_SH
           sh $CLONE_SH
+          ls -l
       - name: 升级feeds
         run: |
-          #./scripts/feeds clean
+          cd lede
           ./scripts/feeds update -a
+          cd ..
           chmod +x $FEEDS_SH
           sh $FEEDS_SH
+          cd lede
           ./scripts/feeds install -a
           ./scripts/feeds install -a
       - name: 修改配置
@@ -77,20 +80,25 @@ jobs:
           then
             sed -i '/mt7621-fix-cpu.patch/ s/#//' $MODIFY_SH
           fi
+          ls -l
           chmod +x $MODIFY_SH
           sh $MODIFY_SH
       - name: 生成.config文件
         run: |
-          sed -i 's/^[ \t]*//g' ./.config
+          mv -f source/.config lede/.config
+          sed -i 's/^[ \t]*//g' lede/.config
+          cd lede
           ls -l
           make defconfig
       - name: Make download
         run: |
+          cd lede
           make download -j8 || make download -j1 V=s
           rm -rf $(find ./dl/ -size -1024c)
           df -h
       - name: 编译
         run: |
+          cd lede
           make -j$(($(nproc) + 1)) || make -j1 V=s
           echo "======================="
           echo "Space usage:"
@@ -100,14 +108,17 @@ jobs:
           du -h ./ --max-depth=1
       - name: 整理固件目录
         run: |
+          cd lede
           mkdir -p ./collected_firmware/packages
           rm -rf $(find ./bin/targets/ -type d -name "packages")
           cp -rf $(find ./bin/targets/ -type f) ./collected_firmware
           cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./collected_firmware/packages
           cd collected_firmware
-          zip -r ./allfiles.zip ./*
+          zip -r ../allfiles.zip ./*
           cd packages
-          zip -r ../packages.zip ./*
+          zip -r ../../packages.zip ./*
+          cd ..
+          ls -l
       - name: 获取当前日期
         run: |
           CURRENT_TIME=$(TZ=Asia/Shanghai date +'%y.%-m.%-d.%H%M%S')

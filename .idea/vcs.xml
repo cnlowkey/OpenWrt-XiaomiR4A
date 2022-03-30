@@ -2,6 +2,12 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lede" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lede/package/luci-app-argon-config" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lede/package/luci-app-nat6-helper" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lede/package/luci-theme-argon" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lede/package/openwrt-packages" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lede/package/openwrt-passwall" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/res/feeds/luci" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/res/feeds/packages" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/res/feeds/routing" vcs="Git" />

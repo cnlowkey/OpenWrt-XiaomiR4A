@@ -10,10 +10,10 @@
 #
 # 下载源码
 git clone https://github.com/coolsnowwolf/lede.git
-mv ./lede/* ./
+#mv ./lede/* ./
 
 # 下载自定义插件
-rm -rf package/lean/luci-theme-argon
+rm -rf lede/package/lean/luci-theme-argon
 #sed -i '$a src-git openwrt_packages https://github.com/openwrt/packages' feeds.conf.default
 #sed -i '$a src-git luci_openwrt https://github.com/openwrt/luci.git' feeds.conf.default
 #sed -i '$a src-git kiddin9_packages https://github.com/kiddin9/openwrt-packages' feeds.conf.default
@@ -23,8 +23,8 @@ rm -rf package/lean/luci-theme-argon
 #sed -i '$a src-git kenzok8_packages https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 #sed -i '$a src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
 # shellcheck disable=SC2164
-cd package
- git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
+cd lede/package
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
 #git clone -b master --single-branch https://github.com/jerrykuku/luci-theme-argon.git
 git clone -b master --single-branch https://github.com/jerrykuku/luci-app-argon-config.git
 git clone -b master --single-branch https://github.com/kenzok8/openwrt-packages.git
