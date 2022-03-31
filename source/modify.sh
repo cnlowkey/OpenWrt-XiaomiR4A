@@ -19,10 +19,10 @@ sed -i '/Device\/xiaomi_mi-router-4a-gigabit/,/Mi Router 4A/ s/14848k/16064k/' l
 \cp -rf source/mt7621.dtsi lede/target/linux/ramips/dts/mt7621_xiaomi_mi-router-4a-3g-v2.dtsi
 # 配置smartdns、ipv6、主题、vssr
 sed -i '/exit 0/d' lede/package/lean/default-settings/files/zzz-default-settings
-cat source/settings/config_smartdns >> lede/package/lean/default-settings/files/zzz-default-settings
-cat source/settings/config_ipv6 >> lede/package/lean/default-settings/files/zzz-default-settings
-cat source/settings/config_theme >> lede/package/lean/default-settings/files/zzz-default-settings
-cat source/settings/config_vssr >> lede/package/lean/default-settings/files/zzz-default-settings
+cat source/settings/smartdns >> lede/package/lean/default-settings/files/zzz-default-settings
+cat source/settings/ipv6 >> lede/package/lean/default-settings/files/zzz-default-settings
+cat source/settings/theme >> lede/package/lean/default-settings/files/zzz-default-settings
+cat source/settings/vssr >> lede/package/lean/default-settings/files/zzz-default-settings
 echo "exit 0" >> lede/package/lean/default-settings/files/zzz-default-settings
 # 切换ramips内核到5.10
 sed -i '/KERNEL_PATCHVER/cKERNEL_PATCHVER:=5.10' lede/target/linux/ramips/Makefile
