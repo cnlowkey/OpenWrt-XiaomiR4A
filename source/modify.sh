@@ -29,7 +29,7 @@ sed -i '/KERNEL_PATCHVER/cKERNEL_PATCHVER:=5.10' lede/target/linux/ramips/Makefi
 # 复制内核5.10版本CPU超频补丁
 #\cp -rf preset-models/322-mt7621-fix-cpu-clk-add-clkdev.patch target/linux/ramips/patches-5.10/322-mt7621-fix-cpu-clk-add-clkdev.patch
 # 设置WIFI
-sed -i 's/OpenWrt/smalls-plus/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+#sed -i 's/OpenWrt/smalls-plus/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #sed -i 's/wireless.default_radio${devidx}.encryption=none/wireless.default_radio${devidx}.encryption=psk-mixed/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #sed -i '/encryption/a\set wireless.default_radio${devidx}.key=coolxiaomi' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 # 修改登录密码为coolxiaomi
