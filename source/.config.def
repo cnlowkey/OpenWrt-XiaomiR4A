@@ -5,12 +5,12 @@ CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-4a-gigabit=y
 
 # luci插件选择
 CONFIG_PACKAGE_ipv6helper=y
-# CONFIG_PACKAGE_luci-app-accesscontrol is not set
-# CONFIG_PACKAGE_luci-app-adblock is not set
-# CONFIG_PACKAGE_luci-app-adbyby-plus is not set
-# CONFIG_PACKAGE_luci-app-adguardhome is not set
-# CONFIG_PACKAGE_luci-app-advanced is not set
-# CONFIG_PACKAGE_luci-app-advanced-reboot is not set
+# CONFIG_PACKAGE_luci-app-accesscontrol is not set #访问时间控制
+# CONFIG_PACKAGE_luci-app-adblock is not set #ADB广告过滤
+# CONFIG_PACKAGE_luci-app-adbyby-plus is not set #广告屏蔽大师Plus +
+# CONFIG_PACKAGE_luci-app-adguardhome is not set #AdGuard home广告过滤（Le库以外的插件）
+# CONFIG_PACKAGE_luci-app-advanced is not set #advanced
+# CONFIG_PACKAGE_luci-app-advanced-reboot is not set  #Linksys高级重启
 # CONFIG_PACKAGE_luci-app-ahcp is not set
 # CONFIG_PACKAGE_luci-app-airplay2 is not set
 # CONFIG_PACKAGE_luci-app-aliddns is not set
