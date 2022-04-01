@@ -29,8 +29,8 @@ rm -rf lede/package/lean/luci-theme-argon
 #sed -i '$a src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
 
 cd lede/package
-#git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
-git clone -b master --single-branch https://github.com/jerrykuku/luci-theme-argon.git
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
+#git clone -b master --single-branch https://github.com/jerrykuku/luci-theme-argon.git
 git clone -b master --single-branch https://github.com/jerrykuku/luci-app-argon-config.git
 git clone -b master --single-branch https://github.com/kenzok8/openwrt-packages.git
 git clone -b main --single-branch https://github.com/Ausaci/luci-app-nat6-helper.git
